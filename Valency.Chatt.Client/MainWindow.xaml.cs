@@ -24,6 +24,12 @@ namespace Valency.Chatt.Client
 
 			InitializeComponent();
 			this.Loaded += MainWindow_Loaded;
+			w.MessageReceived += W_MessageReceived;
+		}
+
+		private void W_MessageReceived(object? sender, string e)
+		{
+			MessageBox.Show(e);
 		}
 
 		private async void MainWindow_Loaded(object sender, RoutedEventArgs e)

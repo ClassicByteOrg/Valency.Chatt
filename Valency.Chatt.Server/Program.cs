@@ -27,7 +27,7 @@ class Program
 
 	private static void WebSocketServer_MessageReceived(object? sender, WebSocketMessageEventArgs e)
 	{
-		throw new NotImplementedException();
+		Console.WriteLine($"客户端'{e.ClientId}'来信：{e.Message}");
 	}
 
 	private static void WebSocketServer_ErrorOccurred(object? sender, Exception e)
@@ -38,7 +38,7 @@ class Program
 
 	private static void WebSocketServer_ClientDisconnected(object? sender, string e)
 	{
-		throw new NotImplementedException();
+		Console.WriteLine($"断开连接：{e}");
 	}
 
 	private static async void WebSocketServer_ClientConnected(object? sender, string e)
