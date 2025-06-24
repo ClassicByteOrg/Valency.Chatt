@@ -44,6 +44,7 @@ class Program
 	private static async void WebSocketServer_ClientConnected(object? sender, string e)
 	{
 		Console.WriteLine("Helloworld!");
+		Console.WriteLine($"e is :{e}");
 		await webSocketServer.SendMessageAsync(e,"nihao");
 	}
 }
