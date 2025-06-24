@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "Valency.Chatt.Server": {
+      "commandName": "Project",
+      "remoteDebugEnabled": true,
+      "authenticationMode": "None",
+      "remoteDebugMachine": ""
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    }
+  }
+}
