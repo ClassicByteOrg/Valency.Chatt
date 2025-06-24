@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:Valency.Chatt.Client"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel VerticalAlignment="Center">
-        <TextBox Height="50" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="400" x:Name="SendMessageBox"></TextBox>
-        <Button Margin="5" Width="40" Content="发送" Height="20" Click="Button_Click"/>
-    </StackPanel>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="5">
+            <TextBox x:Name="SendMessageBox" Width="600" Height="30" Margin="0,0,5,0"/>
+            <Button Width="80" Height="30" Content="发送" Click="Button_Click"/>
+        </StackPanel>
+        <ListBox x:Name="MessageHistory" Margin="5"/>
+    </DockPanel>
 </Window>

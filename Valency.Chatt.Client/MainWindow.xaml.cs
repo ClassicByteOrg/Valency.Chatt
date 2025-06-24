@@ -1,15 +1,6 @@
-﻿using System.Diagnostics;
-using System.Net.WebSockets;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Valency.Chatt.Core;
 
 namespace Valency.Chatt.Client
 {
@@ -18,23 +9,50 @@ namespace Valency.Chatt.Client
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		WebSocketClient w = new WebSocketClient();
+		private ObservableCollection<string> _messages = new();
+
 		public MainWindow()
 		{
-
 			InitializeComponent();
-			this.Loaded += MainWindow_Loaded;
+			MessageHistory.ItemsSource = _messages;
+			Loaded += MainWindow_Loaded;
 		}
 
-		private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
-			 await w.ConnectAsync("ws://132.232.242.101:54258");
+			App.w.MessageReceived += W_MessageReceived;
 		}
 
 		private async void Button_Click(object sender, RoutedEventArgs e)
 		{
-		 	await w.SendMessageAsync(SendMessageBox.Text);
+			var text = SendMessageBox.Text.Trim();
+			if (!string.IsNullOrEmpty(text))
+			{
+				var msg = new Message { MessageType = MessageType.SendMessage, Content = text };
+				await App.w.SendMessageAsync(Valency.Chatt.Core.Util.ToJson(msg));
+				_messages.Add($"我: {text}");
+				SendMessageBox.Clear();
+			}
+		}
+
+		private void W_MessageReceived(object? sender, string e)
+		{
+			try
+			{
+				var msg = Valency.Chatt.Core.Util.FromJson<Message>(e);
+				if (msg.MessageType == MessageType.MessageReceived || msg.MessageType == MessageType.SendMessage)
+				{
+					Dispatcher.Invoke(() => _messages.Add($"对方: {msg.Content}"));
+				}
+				else
+				{
+					Dispatcher.Invoke(() => _messages.Add($"系统: {msg.Content}"));
+				}
+			}
+			catch
+			{
+				Dispatcher.Invoke(() => _messages.Add($"对方: {e}"));
+			}
 		}
 	}
-
 }

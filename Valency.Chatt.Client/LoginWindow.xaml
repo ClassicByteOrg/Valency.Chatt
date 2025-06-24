@@ -1,0 +1,17 @@
+﻿<Window x:Class="Valency.Chatt.Client.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Valency.Chatt.Client"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="305" Width="375">
+    <StackPanel Width="200" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Margin="5">账号</TextBlock>
+        <TextBox x:Name="UserNameBox" />
+        <TextBlock Margin="5">密码</TextBlock>
+        <PasswordBox x:Name="PasswordInputBox"/>
+        <Button Margin="5" Click="Button_Click">Login</Button>
+        <Button Margin="5" Click="Button_Click_1">Register</Button>
+    </StackPanel>
+</Window>

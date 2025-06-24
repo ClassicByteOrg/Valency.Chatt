@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Valency.Chatt.Core
+﻿namespace Valency.Chatt.Core
 {
 	public class User
 	{
@@ -14,6 +8,8 @@ namespace Valency.Chatt.Core
 		public required string Email { get; set; }
 
 		public required string PasswordHash { get; set; }
+
+		public List<User>? Friends { get; set; }
 
 		public User() { }
 	}

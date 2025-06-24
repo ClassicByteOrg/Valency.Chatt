@@ -1,8 +1,5 @@
-﻿using System;
-using System.Net.WebSockets;
+﻿using System.Net.WebSockets;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Valency.Chatt.Client
 {
@@ -11,7 +8,7 @@ namespace Valency.Chatt.Client
 	/// </summary>
 	public class WebSocketClient : IDisposable
 	{
-		private  ClientWebSocket _webSocket;
+		private ClientWebSocket _webSocket;
 		private readonly CancellationTokenSource _cancellationTokenSource;
 		private readonly int _bufferSize;
 		private bool _isDisposed;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using static Valency.Chatt.Core.Util;
 
 namespace Valency.Chatt.Client
@@ -19,7 +14,7 @@ namespace Valency.Chatt.Client
 
 		public static FileInfo GetAllUserDB()
 		{
-			return new FileInfo(Path.Combine(GetAllUserDir().FullName,AllUserDBName));
+			return new FileInfo(Path.Combine(GetAllUserDir().FullName, AllUserDBName));
 		}
 	}
 }

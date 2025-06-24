@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Valency.Chatt.Core;
+﻿using Valency.Chatt.Core;
 using static Valency.Chatt.Client.Util;
 
 namespace Valency.Chatt.Client
@@ -19,7 +13,7 @@ namespace Valency.Chatt.Client
 			}
 			else
 			{
-				return null; 
+				return null;
 			}
 		}
 
